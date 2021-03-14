@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace Balgaran
 {
-    public partial class INdex : Form
+    public partial class Index : Form
     {
-        public INdex()
+        public Index()
         {
             InitializeComponent();
         }
@@ -48,6 +48,8 @@ namespace Balgaran
 
             richTextBoxBookInfo.Text = bookInfo;
             richTextBoxShopInfo.Text = shopInfo;
+            textBoxISBNCopy.Text = textBoxISBN.Text;
+            textBoxPublisherCopy.Text = textBoxPublisher.Text;
 
             textBoxTitle.Clear();
             textBoxAuthor.Clear();
@@ -58,9 +60,9 @@ namespace Balgaran
             textBoxISBN.Clear();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Index_Load(object sender, EventArgs e)
         {
-
+            textBoxHS.Text = "490199";
         }
 
         private void buttonCopyBookInfo_Click(object sender, EventArgs e)
@@ -71,6 +73,21 @@ namespace Balgaran
         private void buttonCopyShopInfo_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(richTextBoxShopInfo.Text);
+        }
+
+        private void richTextBoxShopInfo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCopyISBN_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(textBoxISBNCopy.Text);
+        }
+
+        private void buttonPublisher_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(textBoxPublisherCopy.Text);
         }
     }
 }

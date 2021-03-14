@@ -1,7 +1,7 @@
 ﻿
 namespace Balgaran
 {
-    partial class INdex
+    partial class Index
     {
         /// <summary>
         ///  Required designer variable.
@@ -48,6 +48,12 @@ namespace Balgaran
             this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.buttonCopyBookInfo = new System.Windows.Forms.Button();
             this.buttonCopyShopInfo = new System.Windows.Forms.Button();
+            this.textBoxISBNCopy = new System.Windows.Forms.TextBox();
+            this.buttonCopyISBN = new System.Windows.Forms.Button();
+            this.textBoxPublisherCopy = new System.Windows.Forms.TextBox();
+            this.buttonPublisher = new System.Windows.Forms.Button();
+            this.textBoxHS = new System.Windows.Forms.TextBox();
+            this.buttonCopyHS = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxAuthor
@@ -167,11 +173,12 @@ namespace Balgaran
             // 
             // richTextBoxShopInfo
             // 
-            this.richTextBoxShopInfo.Location = new System.Drawing.Point(310, 188);
+            this.richTextBoxShopInfo.Location = new System.Drawing.Point(310, 267);
             this.richTextBoxShopInfo.Name = "richTextBoxShopInfo";
             this.richTextBoxShopInfo.Size = new System.Drawing.Size(328, 137);
             this.richTextBoxShopInfo.TabIndex = 14;
             this.richTextBoxShopInfo.Text = "";
+            this.richTextBoxShopInfo.TextChanged += new System.EventHandler(this.richTextBoxShopInfo_TextChanged);
             // 
             // labelTitle
             // 
@@ -201,7 +208,7 @@ namespace Balgaran
             // 
             // buttonCopyShopInfo
             // 
-            this.buttonCopyShopInfo.Location = new System.Drawing.Point(544, 331);
+            this.buttonCopyShopInfo.Location = new System.Drawing.Point(545, 410);
             this.buttonCopyShopInfo.Name = "buttonCopyShopInfo";
             this.buttonCopyShopInfo.Size = new System.Drawing.Size(94, 29);
             this.buttonCopyShopInfo.TabIndex = 18;
@@ -209,11 +216,67 @@ namespace Balgaran
             this.buttonCopyShopInfo.UseVisualStyleBackColor = true;
             this.buttonCopyShopInfo.Click += new System.EventHandler(this.buttonCopyShopInfo_Click);
             // 
-            // INdex
+            // textBoxISBNCopy
+            // 
+            this.textBoxISBNCopy.Location = new System.Drawing.Point(314, 187);
+            this.textBoxISBNCopy.Name = "textBoxISBNCopy";
+            this.textBoxISBNCopy.Size = new System.Drawing.Size(200, 28);
+            this.textBoxISBNCopy.TabIndex = 19;
+            // 
+            // buttonCopyISBN
+            // 
+            this.buttonCopyISBN.Location = new System.Drawing.Point(545, 188);
+            this.buttonCopyISBN.Name = "buttonCopyISBN";
+            this.buttonCopyISBN.Size = new System.Drawing.Size(92, 32);
+            this.buttonCopyISBN.TabIndex = 20;
+            this.buttonCopyISBN.Text = "Copy";
+            this.buttonCopyISBN.UseVisualStyleBackColor = true;
+            this.buttonCopyISBN.Click += new System.EventHandler(this.buttonCopyISBN_Click);
+            // 
+            // textBoxPublisherCopy
+            // 
+            this.textBoxPublisherCopy.Location = new System.Drawing.Point(314, 223);
+            this.textBoxPublisherCopy.Name = "textBoxPublisherCopy";
+            this.textBoxPublisherCopy.Size = new System.Drawing.Size(200, 28);
+            this.textBoxPublisherCopy.TabIndex = 21;
+            // 
+            // buttonPublisher
+            // 
+            this.buttonPublisher.Location = new System.Drawing.Point(545, 226);
+            this.buttonPublisher.Name = "buttonPublisher";
+            this.buttonPublisher.Size = new System.Drawing.Size(92, 35);
+            this.buttonPublisher.TabIndex = 22;
+            this.buttonPublisher.Text = "Copy";
+            this.buttonPublisher.UseVisualStyleBackColor = true;
+            this.buttonPublisher.Click += new System.EventHandler(this.buttonPublisher_Click);
+            // 
+            // textBoxHS
+            // 
+            this.textBoxHS.Location = new System.Drawing.Point(12, 350);
+            this.textBoxHS.Name = "textBoxHS";
+            this.textBoxHS.Size = new System.Drawing.Size(175, 28);
+            this.textBoxHS.TabIndex = 23;
+            // 
+            // buttonCopyHS
+            // 
+            this.buttonCopyHS.Location = new System.Drawing.Point(193, 349);
+            this.buttonCopyHS.Name = "buttonCopyHS";
+            this.buttonCopyHS.Size = new System.Drawing.Size(94, 28);
+            this.buttonCopyHS.TabIndex = 24;
+            this.buttonCopyHS.Text = "Copy";
+            this.buttonCopyHS.UseVisualStyleBackColor = true;
+            // 
+            // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 371);
+            this.ClientSize = new System.Drawing.Size(651, 451);
+            this.Controls.Add(this.buttonCopyHS);
+            this.Controls.Add(this.textBoxHS);
+            this.Controls.Add(this.buttonPublisher);
+            this.Controls.Add(this.textBoxPublisherCopy);
+            this.Controls.Add(this.buttonCopyISBN);
+            this.Controls.Add(this.textBoxISBNCopy);
             this.Controls.Add(this.buttonCopyShopInfo);
             this.Controls.Add(this.buttonCopyBookInfo);
             this.Controls.Add(this.textBoxTitle);
@@ -233,10 +296,10 @@ namespace Balgaran
             this.Controls.Add(this.labelPublisher);
             this.Controls.Add(this.labelAuthor);
             this.Controls.Add(this.textBoxAuthor);
-            this.Name = "INdex";
+            this.Name = "Index";
             this.Text = "z";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Index_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,6 +326,12 @@ namespace Balgaran
         private System.Windows.Forms.TextBox textBoxTitle;
         private System.Windows.Forms.Button buttonCopyBookInfo;
         private System.Windows.Forms.Button buttonCopyShopInfo;
+        private System.Windows.Forms.TextBox textBoxISBNCopy;
+        private System.Windows.Forms.Button buttonCopyISBN;
+        private System.Windows.Forms.TextBox textBoxPublisherCopy;
+        private System.Windows.Forms.Button buttonPublisher;
+        private System.Windows.Forms.TextBox textBoxHS;
+        private System.Windows.Forms.Button buttonCopyHS;
     }
 }
 
