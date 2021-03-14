@@ -89,5 +89,10 @@ namespace Balgaran
         {
             Clipboard.SetText(textBoxPublisherCopy.Text);
         }
+
+        private void buttonCopyHS_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(textBoxHS.Text);
+        }
     }
 }

@@ -265,6 +265,7 @@ namespace Balgaran
             this.buttonCopyHS.TabIndex = 24;
             this.buttonCopyHS.Text = "Copy";
             this.buttonCopyHS.UseVisualStyleBackColor = true;
+            this.buttonCopyHS.Click += new System.EventHandler(this.buttonCopyHS_Click);
             // 
             // Index
             // 
