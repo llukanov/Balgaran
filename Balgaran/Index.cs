@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Balgaran
 {
     public partial class Index : Form
     {
+
         public Index()
         {
             InitializeComponent();
@@ -34,9 +37,9 @@ namespace Balgaran
                 bookInfo = bookInfo + "Брой страници: " + textBoxPagesCount.Text + Environment.NewLine;
             }
 
-            if (textBoxCover != null)
+            if (comboBoxCover != null)
             {
-                bookInfo = bookInfo + "Корица: " + textBoxCover.Text + Environment.NewLine;
+                bookInfo = bookInfo + "Корица: " + comboBoxCover.Text + Environment.NewLine;
             }
 
             if (textBoxISBN != null)
@@ -56,8 +59,8 @@ namespace Balgaran
             textBoxPublisher.Clear();
             textBoxYear.Clear();
             textBoxPagesCount.Clear();
-            textBoxCover.Clear();
             textBoxISBN.Clear();
+            richTextBoxBookInfoScanner.Clear();
         }
 
         private void Index_Load(object sender, EventArgs e)
@@ -93,6 +96,53 @@ namespace Balgaran
         private void buttonCopyHS_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(textBoxHS.Text);
+        }
+
+        private void richTextBoxBookInfoScanner_TextChanged(object sender, EventArgs e)
+        {
+            var text = richTextBoxBookInfoScanner.Text.Split(Environment.NewLine, StringSplitOptions.None);
+
+            foreach (var line in text)
+            {
+                if (line.Contains(" Издателство"))
+                {
+                    // Publisher
+                    string patternPublisher = @"(Издателство)(\s+)(\W*)";
+                    var matchPublisher = Regex.Match(line, patternPublisher);
+                    textBoxPublisher.Text = matchPublisher.Groups[3].Value;
+                }
+
+                    
+
+                    // Year
+                    string patternYear = @"\W*((?i)Издадена(?-i))\W*((?i)[0-9-]*(?-i))";
+                    var matchYear = Regex.Match(line, patternYear);
+                    textBoxYear.Text = matchYear.Groups[2].Value;
+
+                // PagesCount
+                string patternPagesCount = @"(Страници)(\s+)([0-9-]*)";
+                var matchPagesCount = Regex.Match(line, patternPagesCount);
+                textBoxPagesCount.Text = matchPagesCount.Groups[3].Value;
+
+                // ISBN
+                string patternISBN = @"(ISBN)(\s+)([0-9-]*)";
+                var matchISBN = Regex.Match(line, patternISBN);
+                textBoxISBN.Text = matchISBN.Groups[3].Value;
+
+                // Weight
+                string patternWeight = @"(Тегло)(\s+)([0-9.-]*)";
+                var matchWeight = Regex.Match(line, patternWeight);
+
+                var weight = Convert.ToDouble(matchWeight.Groups[3].Value, CultureInfo.InvariantCulture) + 0.05;
+
+                textBoxWeight.Text = weight.ToString(new CultureInfo("en-US"));
+
+            }        
+        }
+
+        private void buttonPaste_Click(object sender, EventArgs e)
+        {
+            richTextBoxBookInfoScanner.Text = Clipboard.GetText();
         }
     }
 }

@@ -38,7 +38,6 @@ namespace Balgaran
             this.textBoxPagesCount = new System.Windows.Forms.TextBox();
             this.labelPagesCount = new System.Windows.Forms.Label();
             this.labelCover = new System.Windows.Forms.Label();
-            this.textBoxCover = new System.Windows.Forms.TextBox();
             this.textBoxISBN = new System.Windows.Forms.TextBox();
             this.labelISBN = new System.Windows.Forms.Label();
             this.buttonGenerate = new System.Windows.Forms.Button();
@@ -54,6 +53,11 @@ namespace Balgaran
             this.buttonPublisher = new System.Windows.Forms.Button();
             this.textBoxHS = new System.Windows.Forms.TextBox();
             this.buttonCopyHS = new System.Windows.Forms.Button();
+            this.richTextBoxBookInfoScanner = new System.Windows.Forms.RichTextBox();
+            this.textBoxWeight = new System.Windows.Forms.TextBox();
+            this.buttonWeight = new System.Windows.Forms.Button();
+            this.buttonPaste = new System.Windows.Forms.Button();
+            this.comboBoxCover = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // textBoxAuthor
@@ -130,18 +134,11 @@ namespace Balgaran
             this.labelCover.TabIndex = 8;
             this.labelCover.Text = "Cover";
             // 
-            // textBoxCover
-            // 
-            this.textBoxCover.Location = new System.Drawing.Point(111, 179);
-            this.textBoxCover.Name = "textBoxCover";
-            this.textBoxCover.Size = new System.Drawing.Size(176, 28);
-            this.textBoxCover.TabIndex = 9;
-            // 
             // textBoxISBN
             // 
             this.textBoxISBN.Location = new System.Drawing.Point(111, 213);
             this.textBoxISBN.Name = "textBoxISBN";
-            this.textBoxISBN.Size = new System.Drawing.Size(176, 28);
+            this.textBoxISBN.Size = new System.Drawing.Size(173, 28);
             this.textBoxISBN.TabIndex = 10;
             // 
             // labelISBN
@@ -173,7 +170,7 @@ namespace Balgaran
             // 
             // richTextBoxShopInfo
             // 
-            this.richTextBoxShopInfo.Location = new System.Drawing.Point(310, 267);
+            this.richTextBoxShopInfo.Location = new System.Drawing.Point(309, 316);
             this.richTextBoxShopInfo.Name = "richTextBoxShopInfo";
             this.richTextBoxShopInfo.Size = new System.Drawing.Size(328, 137);
             this.richTextBoxShopInfo.TabIndex = 14;
@@ -208,7 +205,7 @@ namespace Balgaran
             // 
             // buttonCopyShopInfo
             // 
-            this.buttonCopyShopInfo.Location = new System.Drawing.Point(545, 410);
+            this.buttonCopyShopInfo.Location = new System.Drawing.Point(543, 459);
             this.buttonCopyShopInfo.Name = "buttonCopyShopInfo";
             this.buttonCopyShopInfo.Size = new System.Drawing.Size(94, 29);
             this.buttonCopyShopInfo.TabIndex = 18;
@@ -252,14 +249,14 @@ namespace Balgaran
             // 
             // textBoxHS
             // 
-            this.textBoxHS.Location = new System.Drawing.Point(12, 350);
+            this.textBoxHS.Location = new System.Drawing.Point(12, 292);
             this.textBoxHS.Name = "textBoxHS";
             this.textBoxHS.Size = new System.Drawing.Size(175, 28);
             this.textBoxHS.TabIndex = 23;
             // 
             // buttonCopyHS
             // 
-            this.buttonCopyHS.Location = new System.Drawing.Point(193, 349);
+            this.buttonCopyHS.Location = new System.Drawing.Point(192, 292);
             this.buttonCopyHS.Name = "buttonCopyHS";
             this.buttonCopyHS.Size = new System.Drawing.Size(94, 28);
             this.buttonCopyHS.TabIndex = 24;
@@ -267,11 +264,62 @@ namespace Balgaran
             this.buttonCopyHS.UseVisualStyleBackColor = true;
             this.buttonCopyHS.Click += new System.EventHandler(this.buttonCopyHS_Click);
             // 
+            // richTextBoxBookInfoScanner
+            // 
+            this.richTextBoxBookInfoScanner.Location = new System.Drawing.Point(12, 366);
+            this.richTextBoxBookInfoScanner.Name = "richTextBoxBookInfoScanner";
+            this.richTextBoxBookInfoScanner.Size = new System.Drawing.Size(272, 184);
+            this.richTextBoxBookInfoScanner.TabIndex = 25;
+            this.richTextBoxBookInfoScanner.Text = "";
+            this.richTextBoxBookInfoScanner.TextChanged += new System.EventHandler(this.richTextBoxBookInfoScanner_TextChanged);
+            // 
+            // textBoxWeight
+            // 
+            this.textBoxWeight.Location = new System.Drawing.Point(314, 265);
+            this.textBoxWeight.Name = "textBoxWeight";
+            this.textBoxWeight.Size = new System.Drawing.Size(199, 28);
+            this.textBoxWeight.TabIndex = 26;
+            // 
+            // buttonWeight
+            // 
+            this.buttonWeight.Location = new System.Drawing.Point(545, 267);
+            this.buttonWeight.Name = "buttonWeight";
+            this.buttonWeight.Size = new System.Drawing.Size(88, 29);
+            this.buttonWeight.TabIndex = 27;
+            this.buttonWeight.Text = "Copy";
+            this.buttonWeight.UseVisualStyleBackColor = true;
+            // 
+            // buttonPaste
+            // 
+            this.buttonPaste.Location = new System.Drawing.Point(190, 326);
+            this.buttonPaste.Name = "buttonPaste";
+            this.buttonPaste.Size = new System.Drawing.Size(96, 34);
+            this.buttonPaste.TabIndex = 28;
+            this.buttonPaste.Text = "Постави";
+            this.buttonPaste.UseVisualStyleBackColor = true;
+            this.buttonPaste.Click += new System.EventHandler(this.buttonPaste_Click);
+            // 
+            // comboBoxCover
+            // 
+            this.comboBoxCover.FormattingEnabled = true;
+            this.comboBoxCover.Items.AddRange(new object[] {
+            "Мека",
+            "Твърда"});
+            this.comboBoxCover.Location = new System.Drawing.Point(111, 179);
+            this.comboBoxCover.Name = "comboBoxCover";
+            this.comboBoxCover.Size = new System.Drawing.Size(173, 28);
+            this.comboBoxCover.TabIndex = 29;
+            // 
             // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 451);
+            this.ClientSize = new System.Drawing.Size(673, 653);
+            this.Controls.Add(this.comboBoxCover);
+            this.Controls.Add(this.buttonPaste);
+            this.Controls.Add(this.buttonWeight);
+            this.Controls.Add(this.textBoxWeight);
+            this.Controls.Add(this.richTextBoxBookInfoScanner);
             this.Controls.Add(this.buttonCopyHS);
             this.Controls.Add(this.textBoxHS);
             this.Controls.Add(this.buttonPublisher);
@@ -287,7 +335,6 @@ namespace Balgaran
             this.Controls.Add(this.buttonGenerate);
             this.Controls.Add(this.labelISBN);
             this.Controls.Add(this.textBoxISBN);
-            this.Controls.Add(this.textBoxCover);
             this.Controls.Add(this.labelCover);
             this.Controls.Add(this.labelPagesCount);
             this.Controls.Add(this.textBoxPagesCount);
@@ -317,7 +364,6 @@ namespace Balgaran
         private System.Windows.Forms.TextBox textBoxPagesCount;
         private System.Windows.Forms.Label labelPagesCount;
         private System.Windows.Forms.Label labelCover;
-        private System.Windows.Forms.TextBox textBoxCover;
         private System.Windows.Forms.TextBox textBoxISBN;
         private System.Windows.Forms.Label labelISBN;
         private System.Windows.Forms.Button buttonGenerate;
@@ -333,6 +379,11 @@ namespace Balgaran
         private System.Windows.Forms.Button buttonPublisher;
         private System.Windows.Forms.TextBox textBoxHS;
         private System.Windows.Forms.Button buttonCopyHS;
+        private System.Windows.Forms.RichTextBox richTextBoxBookInfoScanner;
+        private System.Windows.Forms.TextBox textBoxWeight;
+        private System.Windows.Forms.Button buttonWeight;
+        private System.Windows.Forms.Button buttonPaste;
+        private System.Windows.Forms.ComboBox comboBoxCover;
     }
 }
 
