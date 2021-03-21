@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -7,15 +8,62 @@ namespace Balgaran
 {
     public partial class Index : Form
     {
+        Dictionary<string, string> letters = new Dictionary<string, string>();
+
 
         public Index()
         {
             InitializeComponent();
+
+            letters.Add("а", "a");
+            letters.Add("б", "b");
+            letters.Add("в", "v");
+            letters.Add("г", "g");
+            letters.Add("д", "d");
+            letters.Add("е", "e");
+            letters.Add("ё", "yo");
+            letters.Add("ж", "zh");
+            letters.Add("з", "z");
+            letters.Add("и", "i");
+            letters.Add("й", "j");
+            letters.Add("к", "k");
+            letters.Add("л", "l");
+            letters.Add("м", "m");
+            letters.Add("н", "n");
+            letters.Add("о", "o");
+            letters.Add("п", "p");
+            letters.Add("р", "r");
+            letters.Add("с", "s");
+            letters.Add("т", "t");
+            letters.Add("у", "u");
+            letters.Add("ф", "f");
+            letters.Add("х", "h");
+            letters.Add("ц", "c");
+            letters.Add("ч", "ch");
+            letters.Add("ш", "sh");
+            letters.Add("щ", "sch");
+            letters.Add("ъ", "j");
+            letters.Add("ы", "i");
+            letters.Add("ь", "j");
+            letters.Add("э", "e");
+            letters.Add("ю", "yu");
+            letters.Add("я", "ya");
+            letters.Add(" ", "-");
+            letters.Add("\"", "");
+            letters.Add(".", "");
+            letters.Add(",", "");
+            letters.Add("(", "");
+            letters.Add(")", "");
         }
 
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
             var bookInfo = string.Empty;
+
+            if (textBoxTitle.Text != null)
+            {
+                SetURL();
+            }
 
             if (textBoxAuthor.Text != null)
             {
@@ -39,7 +87,7 @@ namespace Balgaran
 
             if (comboBoxCover != null)
             {
-                bookInfo = bookInfo + "Корица: " + comboBoxCover.Text + Environment.NewLine;
+                bookInfo = bookInfo + "Корица: " + comboBoxCover.SelectedItem.ToString() + Environment.NewLine;
             }
 
             if (textBoxISBN != null)
@@ -59,13 +107,30 @@ namespace Balgaran
             textBoxPublisher.Clear();
             textBoxYear.Clear();
             textBoxPagesCount.Clear();
+            comboBoxCover.ResetText();
             textBoxISBN.Clear();
-            richTextBoxBookInfoScanner.Clear();
+
+            Clipboard.SetText(richTextBoxBookInfo.Text);
+        }
+
+        private void SetURL()
+        {
+            var url = textBoxTitle.Text;
+            url += " " + textBoxAuthor.Text;
+            url += " " + comboBoxCover.SelectedItem.ToString();
+            url = url.ToLower();
+
+            foreach (KeyValuePair<string, string> pair in letters)
+            {
+                url = url.Replace(pair.Key, pair.Value);
+            }
+
+            buttonURL.Text = url;
         }
 
         private void Index_Load(object sender, EventArgs e)
         {
-            textBoxHS.Text = "490199";
+            
         }
 
         private void buttonCopyBookInfo_Click(object sender, EventArgs e)
@@ -95,29 +160,40 @@ namespace Balgaran
 
         private void buttonCopyHS_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(textBoxHS.Text);
+            Clipboard.SetText(buttonCopyHS.Text);
         }
 
         private void richTextBoxBookInfoScanner_TextChanged(object sender, EventArgs e)
         {
             var text = richTextBoxBookInfoScanner.Text.Split(Environment.NewLine, StringSplitOptions.None);
 
+            var textCopy = richTextBoxBookInfoScanner.Text.Split('\n');
+
+            textBoxTitle.Text = textCopy[0];
+
+            if (!textCopy[1].Contains("Цена"))
+            {
+                textBoxAuthor.Text = textCopy[1];
+            }
+
+            foreach (var line in textCopy)
+            {
+                SetPublisher(line);
+
+                SetCover(line);
+
+                SetPrice(line);
+
+                SetWeight(line);
+            }
+
             foreach (var line in text)
             {
-                if (line.Contains(" Издателство"))
-                {
-                    // Publisher
-                    string patternPublisher = @"(Издателство)(\s+)(\W*)";
-                    var matchPublisher = Regex.Match(line, patternPublisher);
-                    textBoxPublisher.Text = matchPublisher.Groups[3].Value;
-                }
 
-                    
-
-                    // Year
-                    string patternYear = @"\W*((?i)Издадена(?-i))\W*((?i)[0-9-]*(?-i))";
-                    var matchYear = Regex.Match(line, patternYear);
-                    textBoxYear.Text = matchYear.Groups[2].Value;
+                // Year
+                string patternYear = @"\W*((?i)Издадена(?-i))\W*((?i)[0-9-]*(?-i))";
+                var matchYear = Regex.Match(line, patternYear);
+                textBoxYear.Text = matchYear.Groups[2].Value;
 
                 // PagesCount
                 string patternPagesCount = @"(Страници)(\s+)([0-9-]*)";
@@ -130,19 +206,115 @@ namespace Balgaran
                 textBoxISBN.Text = matchISBN.Groups[3].Value;
 
                 // Weight
-                string patternWeight = @"(Тегло)(\s+)([0-9.-]*)";
-                var matchWeight = Regex.Match(line, patternWeight);
+                //string patternWeight = @"(Тегло)(\s+)([0-9.-]*)";
+                //var matchWeight = Regex.Match(line, patternWeight);
 
-                var weight = Convert.ToDouble(matchWeight.Groups[3].Value, CultureInfo.InvariantCulture) + 0.05;
+                //var weight = Convert.ToDouble(matchWeight.Groups[3].Value, CultureInfo.InvariantCulture) + 0.05;
 
-                textBoxWeight.Text = weight.ToString(new CultureInfo("en-US"));
+                //textBoxWeight.Text = weight.ToString(new CultureInfo("en-US"));
 
-            }        
+            }
         }
 
-        private void buttonPaste_Click(object sender, EventArgs e)
+        private void SetWeight(string line)
+        {
+            if (line.Contains("Тегло"))
+            {
+                var weightString = line;
+
+                var forbiddenSymbol = new[]
+                {
+                        "Тегло\t\t",
+                        " kg",
+                    };
+
+                foreach (var symbol in forbiddenSymbol)
+                {
+                    weightString = weightString.Replace(symbol, string.Empty);
+                }
+
+                var weight = Convert.ToDouble(weightString, CultureInfo.InvariantCulture) + 0.05;
+
+                buttonWeightCopy.Text = weight.ToString(new CultureInfo("en-US"));
+            }
+        }
+
+        private void SetPrice(string line)
+        {
+            var forbiddenSymbol = new[]
+            {
+                "Стандартна цена ",
+                "Цена: ",
+                " лв.",
+            };
+
+            if (richTextBoxBookInfoScanner.Text.Contains(forbiddenSymbol[0]) && line.Contains(forbiddenSymbol[0]))
+            {
+                var price = line;
+
+                foreach (var symbol in forbiddenSymbol)
+                {
+                    price = price.Replace(symbol, string.Empty);
+                }
+
+                buttonPrice.Text = price;
+            }
+
+            if (line.Contains("Цена") && !richTextBoxBookInfoScanner.Text.Contains(forbiddenSymbol[0]) && !line.Contains("доставка"))
+            {
+                var price = line;
+
+                foreach (var symbol in forbiddenSymbol)
+                {
+                    price = price.Replace(symbol, string.Empty);
+                }
+
+                buttonPrice.Text = price;
+            }
+        }
+
+        private void SetCover(string line)
+        {
+            if (line.Contains("Корица"))
+            {
+                var cover = line.Replace("Корица\t\t", string.Empty);
+
+                comboBoxCover.Text = cover;
+            }
+        }
+
+        private void SetPublisher(string line)
+        {
+            if (line.Contains("Издателство"))
+            {
+                var publisher = line.Replace("Издателство\t\t", string.Empty);
+
+                textBoxPublisher.Text = publisher;
+            }
+        }
+
+        private void buttonPasteInfo_Click(object sender, EventArgs e)
         {
             richTextBoxBookInfoScanner.Text = Clipboard.GetText();
+        }
+
+        private void buttonWeightCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(buttonWeightCopy.Text);
+
+            buttonWeightCopy.Text = "Тегло";
+        }
+
+        private void buttonPrice_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(buttonPrice.Text);
+            buttonPrice.Text = "Цена";
+        }
+
+        private void buttonURL_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(buttonURL.Text);
+            buttonURL.Text = "Адрес";
         }
     }
 }
