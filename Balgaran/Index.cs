@@ -10,6 +10,13 @@ namespace Balgaran
     {
         Dictionary<string, string> letters = new Dictionary<string, string>();
 
+        string title = string.Empty;
+        string author = string.Empty;
+        string publisher = string.Empty;
+        string year = string.Empty;
+        string pagesCount = string.Empty;
+        string isbn = string.Empty;
+        string input = string.Empty;
 
         public Index()
         {
@@ -58,31 +65,31 @@ namespace Balgaran
 
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
-            var bookInfo = string.Empty;
+            var bookInfo = "\n\n";
 
-            if (textBoxTitle.Text != null)
+            if (title != string.Empty)
             {
                 SetURL();
             }
 
-            if (textBoxAuthor.Text != null)
+            if (author != string.Empty)
             {
-                bookInfo = bookInfo + "Автор: " + textBoxAuthor.Text + Environment.NewLine;
+                bookInfo = bookInfo + "Автор: " + author + Environment.NewLine;
             }
 
-            if (textBoxPublisher.Text != null)
+            if (publisher != string.Empty)
             {
-                bookInfo = bookInfo + "Издателство: " + textBoxPublisher.Text + Environment.NewLine;
+                bookInfo = bookInfo + "Издателство: " + publisher + Environment.NewLine;
             }
 
-            if (textBoxYear.Text != null)
+            if (year != string.Empty)
             {
-                bookInfo = bookInfo + "Година: " + textBoxYear.Text + Environment.NewLine;
+                bookInfo = bookInfo + "Година: " + year + Environment.NewLine;
             }
 
-            if (textBoxPagesCount != null)
+            if (pagesCount != string.Empty)
             {
-                bookInfo = bookInfo + "Брой страници: " + textBoxPagesCount.Text + Environment.NewLine;
+                bookInfo = bookInfo + "Брой страници: " + pagesCount + Environment.NewLine;
             }
 
             if (comboBoxCover != null)
@@ -90,34 +97,41 @@ namespace Balgaran
                 bookInfo = bookInfo + "Корица: " + comboBoxCover.SelectedItem.ToString() + Environment.NewLine;
             }
 
-            if (textBoxISBN != null)
+            if (isbn != string.Empty)
             {
-                bookInfo = bookInfo + "ISBN: " + textBoxISBN.Text + Environment.NewLine;
+                bookInfo = bookInfo + "ISBN: " + isbn + Environment.NewLine;
             }
 
-            var shopInfo = "Поръчайте книгата \"" + textBoxTitle.Text + "\" на издателство " + textBoxPublisher.Text + " доставка в чужбина на balgaran.co.uk. Открийте най-големия каталог от книги на български език с доставка в цял свят.";
+            var shopInfo = "Поръчайте книгата \"" + title + "\" на издателство " + publisher + " доставка в чужбина на balgaran.co.uk. Открийте най-големия каталог от книги на български език с доставка в цял свят.";
 
-            richTextBoxBookInfo.Text = bookInfo;
-            richTextBoxShopInfo.Text = shopInfo;
-            textBoxISBNCopy.Text = textBoxISBN.Text;
-            textBoxPublisherCopy.Text = textBoxPublisher.Text;
+            buttonCopyBookInfo.Text = bookInfo;
+            buttonCopyShopInfo.Text = shopInfo;
+            buttonCopyISBN.Text = isbn;
+            buttonPublisher.Text = publisher;
 
-            textBoxTitle.Clear();
-            textBoxAuthor.Clear();
-            textBoxPublisher.Clear();
-            textBoxYear.Clear();
-            textBoxPagesCount.Clear();
+            buttonSetTitle.Text = "Заглавие";
+            buttonSetAuthor.Text = "Автор";
+            buttonSetPublisher.Text = "Издателство";
+            buttonSetYear.Text = "Година";
+            buttonSetPagesCount.Text = "Страници";
             comboBoxCover.ResetText();
-            textBoxISBN.Clear();
+            buttonISBN.Text = "ISBN";
 
-            Clipboard.SetText(richTextBoxBookInfo.Text);
+            title = string.Empty;
+            author = string.Empty;
+            publisher = string.Empty;
+            year = string.Empty;
+            pagesCount = string.Empty;
+            isbn = string.Empty;
+
+            Clipboard.SetText(buttonCopyBookInfo.Text);
         }
 
         private void SetURL()
         {
-            var url = textBoxTitle.Text;
-            url += " " + textBoxAuthor.Text;
-            url += " " + comboBoxCover.SelectedItem.ToString();
+            var url = title;
+            url += author;
+            url += comboBoxCover.SelectedItem.ToString();
             url = url.ToLower();
 
             foreach (KeyValuePair<string, string> pair in letters)
@@ -135,12 +149,12 @@ namespace Balgaran
 
         private void buttonCopyBookInfo_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(richTextBoxBookInfo.Text);
+            Clipboard.SetText(buttonCopyBookInfo.Text);
         }
 
         private void buttonCopyShopInfo_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(richTextBoxShopInfo.Text);
+            Clipboard.SetText(buttonCopyShopInfo.Text);
         }
 
         private void richTextBoxShopInfo_TextChanged(object sender, EventArgs e)
@@ -150,12 +164,12 @@ namespace Balgaran
 
         private void buttonCopyISBN_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(textBoxISBNCopy.Text);
+            Clipboard.SetText(buttonCopyISBN.Text);
         }
 
         private void buttonPublisher_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(textBoxPublisherCopy.Text);
+            Clipboard.SetText(buttonPublisher.Text);
         }
 
         private void buttonCopyHS_Click(object sender, EventArgs e)
@@ -169,11 +183,13 @@ namespace Balgaran
 
             var textCopy = richTextBoxBookInfoScanner.Text.Split('\n');
 
-            textBoxTitle.Text = textCopy[0];
+            title = textCopy[0];
+            buttonSetTitle.Text = textCopy[0];
 
             if (!textCopy[1].Contains("Цена"))
             {
-                textBoxAuthor.Text = textCopy[1];
+                author = textCopy[1];
+                buttonSetAuthor.Text = textCopy[1];
             }
 
             foreach (var line in textCopy)
@@ -193,26 +209,20 @@ namespace Balgaran
                 // Year
                 string patternYear = @"\W*((?i)Издадена(?-i))\W*((?i)[0-9-]*(?-i))";
                 var matchYear = Regex.Match(line, patternYear);
-                textBoxYear.Text = matchYear.Groups[2].Value;
+                year = matchYear.Groups[2].Value;
+                buttonSetYear.Text = year;
 
                 // PagesCount
                 string patternPagesCount = @"(Страници)(\s+)([0-9-]*)";
                 var matchPagesCount = Regex.Match(line, patternPagesCount);
-                textBoxPagesCount.Text = matchPagesCount.Groups[3].Value;
+                pagesCount = matchPagesCount.Groups[3].Value;
+                buttonSetPagesCount.Text = pagesCount;
 
                 // ISBN
                 string patternISBN = @"(ISBN)(\s+)([0-9-]*)";
                 var matchISBN = Regex.Match(line, patternISBN);
-                textBoxISBN.Text = matchISBN.Groups[3].Value;
-
-                // Weight
-                //string patternWeight = @"(Тегло)(\s+)([0-9.-]*)";
-                //var matchWeight = Regex.Match(line, patternWeight);
-
-                //var weight = Convert.ToDouble(matchWeight.Groups[3].Value, CultureInfo.InvariantCulture) + 0.05;
-
-                //textBoxWeight.Text = weight.ToString(new CultureInfo("en-US"));
-
+                isbn = matchISBN.Groups[3].Value;
+                buttonISBN.Text = isbn;
             }
         }
 
@@ -287,9 +297,9 @@ namespace Balgaran
         {
             if (line.Contains("Издателство"))
             {
-                var publisher = line.Replace("Издателство\t\t", string.Empty);
+                publisher = line.Replace("Издателство\t\t", string.Empty);
 
-                textBoxPublisher.Text = publisher;
+                buttonSetPublisher.Text = publisher;
             }
         }
 
@@ -315,6 +325,42 @@ namespace Balgaran
         {
             Clipboard.SetText(buttonURL.Text);
             buttonURL.Text = "Адрес";
+        }
+
+        private void buttonSetTitle_Click(object sender, EventArgs e)
+        {
+            title = Clipboard.GetText();
+            buttonSetTitle.Text = title;
+        }
+
+        private void buttonSetAuthor_Click(object sender, EventArgs e)
+        {
+            author = Clipboard.GetText();
+            buttonSetAuthor.Text = author;
+        }
+
+        private void buttonSetPublisher_Click(object sender, EventArgs e)
+        {
+            publisher = Clipboard.GetText();
+            buttonSetPublisher.Text = publisher;
+        }
+
+        private void buttonSetYear_Click(object sender, EventArgs e)
+        {
+            year = Clipboard.GetText();
+            buttonSetYear.Text = year;
+        }
+
+        private void buttonSetPagesCount_Click(object sender, EventArgs e)
+        {
+            pagesCount = Clipboard.GetText();
+            buttonSetPagesCount.Text = pagesCount;
+        }
+
+        private void buttonISBN_Click(object sender, EventArgs e)
+        {
+            isbn = Clipboard.GetText();
+            buttonISBN.Text = isbn;
         }
     }
 }

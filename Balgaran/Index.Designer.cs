@@ -29,27 +29,10 @@ namespace Balgaran
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxAuthor = new System.Windows.Forms.TextBox();
-            this.labelAuthor = new System.Windows.Forms.Label();
-            this.labelPublisher = new System.Windows.Forms.Label();
-            this.textBoxPublisher = new System.Windows.Forms.TextBox();
-            this.labelYear = new System.Windows.Forms.Label();
-            this.textBoxYear = new System.Windows.Forms.TextBox();
-            this.textBoxPagesCount = new System.Windows.Forms.TextBox();
-            this.labelPagesCount = new System.Windows.Forms.Label();
-            this.labelCover = new System.Windows.Forms.Label();
-            this.textBoxISBN = new System.Windows.Forms.TextBox();
-            this.labelISBN = new System.Windows.Forms.Label();
             this.buttonGenerate = new System.Windows.Forms.Button();
-            this.richTextBoxBookInfo = new System.Windows.Forms.RichTextBox();
-            this.richTextBoxShopInfo = new System.Windows.Forms.RichTextBox();
-            this.labelTitle = new System.Windows.Forms.Label();
-            this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.buttonCopyBookInfo = new System.Windows.Forms.Button();
             this.buttonCopyShopInfo = new System.Windows.Forms.Button();
-            this.textBoxISBNCopy = new System.Windows.Forms.TextBox();
             this.buttonCopyISBN = new System.Windows.Forms.Button();
-            this.textBoxPublisherCopy = new System.Windows.Forms.TextBox();
             this.buttonPublisher = new System.Windows.Forms.Button();
             this.buttonCopyHS = new System.Windows.Forms.Button();
             this.richTextBoxBookInfoScanner = new System.Windows.Forms.RichTextBox();
@@ -58,203 +41,81 @@ namespace Balgaran
             this.buttonPasteInfo = new System.Windows.Forms.Button();
             this.buttonPrice = new System.Windows.Forms.Button();
             this.buttonURL = new System.Windows.Forms.Button();
+            this.buttonSetTitle = new System.Windows.Forms.Button();
+            this.buttonSetAuthor = new System.Windows.Forms.Button();
+            this.buttonSetPublisher = new System.Windows.Forms.Button();
+            this.buttonSetYear = new System.Windows.Forms.Button();
+            this.buttonSetPagesCount = new System.Windows.Forms.Button();
+            this.buttonISBN = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // textBoxAuthor
-            // 
-            this.textBoxAuthor.Location = new System.Drawing.Point(111, 43);
-            this.textBoxAuthor.Name = "textBoxAuthor";
-            this.textBoxAuthor.Size = new System.Drawing.Size(176, 28);
-            this.textBoxAuthor.TabIndex = 0;
-            // 
-            // labelAuthor
-            // 
-            this.labelAuthor.AutoSize = true;
-            this.labelAuthor.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.labelAuthor.Location = new System.Drawing.Point(12, 51);
-            this.labelAuthor.Name = "labelAuthor";
-            this.labelAuthor.Size = new System.Drawing.Size(56, 20);
-            this.labelAuthor.TabIndex = 1;
-            this.labelAuthor.Text = "Author";
-            // 
-            // labelPublisher
-            // 
-            this.labelPublisher.AutoSize = true;
-            this.labelPublisher.Location = new System.Drawing.Point(12, 85);
-            this.labelPublisher.Name = "labelPublisher";
-            this.labelPublisher.Size = new System.Drawing.Size(74, 20);
-            this.labelPublisher.TabIndex = 2;
-            this.labelPublisher.Text = "Publisher";
-            // 
-            // textBoxPublisher
-            // 
-            this.textBoxPublisher.Location = new System.Drawing.Point(111, 77);
-            this.textBoxPublisher.Name = "textBoxPublisher";
-            this.textBoxPublisher.Size = new System.Drawing.Size(176, 28);
-            this.textBoxPublisher.TabIndex = 3;
-            // 
-            // labelYear
-            // 
-            this.labelYear.AutoSize = true;
-            this.labelYear.Location = new System.Drawing.Point(12, 119);
-            this.labelYear.Name = "labelYear";
-            this.labelYear.Size = new System.Drawing.Size(39, 20);
-            this.labelYear.TabIndex = 4;
-            this.labelYear.Text = "Year";
-            // 
-            // textBoxYear
-            // 
-            this.textBoxYear.Location = new System.Drawing.Point(111, 111);
-            this.textBoxYear.Name = "textBoxYear";
-            this.textBoxYear.Size = new System.Drawing.Size(176, 28);
-            this.textBoxYear.TabIndex = 5;
-            // 
-            // textBoxPagesCount
-            // 
-            this.textBoxPagesCount.Location = new System.Drawing.Point(111, 145);
-            this.textBoxPagesCount.Name = "textBoxPagesCount";
-            this.textBoxPagesCount.Size = new System.Drawing.Size(176, 28);
-            this.textBoxPagesCount.TabIndex = 6;
-            // 
-            // labelPagesCount
-            // 
-            this.labelPagesCount.AutoSize = true;
-            this.labelPagesCount.Location = new System.Drawing.Point(12, 153);
-            this.labelPagesCount.Name = "labelPagesCount";
-            this.labelPagesCount.Size = new System.Drawing.Size(90, 20);
-            this.labelPagesCount.TabIndex = 7;
-            this.labelPagesCount.Text = "PagesCount";
-            // 
-            // labelCover
-            // 
-            this.labelCover.AutoSize = true;
-            this.labelCover.Location = new System.Drawing.Point(12, 187);
-            this.labelCover.Name = "labelCover";
-            this.labelCover.Size = new System.Drawing.Size(49, 20);
-            this.labelCover.TabIndex = 8;
-            this.labelCover.Text = "Cover";
-            // 
-            // textBoxISBN
-            // 
-            this.textBoxISBN.Location = new System.Drawing.Point(111, 213);
-            this.textBoxISBN.Name = "textBoxISBN";
-            this.textBoxISBN.Size = new System.Drawing.Size(176, 28);
-            this.textBoxISBN.TabIndex = 10;
-            // 
-            // labelISBN
-            // 
-            this.labelISBN.AutoSize = true;
-            this.labelISBN.Location = new System.Drawing.Point(12, 223);
-            this.labelISBN.Name = "labelISBN";
-            this.labelISBN.Size = new System.Drawing.Size(42, 20);
-            this.labelISBN.TabIndex = 11;
-            this.labelISBN.Text = "ISBN";
             // 
             // buttonGenerate
             // 
-            this.buttonGenerate.Location = new System.Drawing.Point(156, 257);
+            this.buttonGenerate.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.buttonGenerate.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonGenerate.Location = new System.Drawing.Point(94, 276);
             this.buttonGenerate.Name = "buttonGenerate";
-            this.buttonGenerate.Size = new System.Drawing.Size(131, 29);
+            this.buttonGenerate.Size = new System.Drawing.Size(129, 38);
             this.buttonGenerate.TabIndex = 12;
-            this.buttonGenerate.Text = "Generate";
-            this.buttonGenerate.UseVisualStyleBackColor = true;
+            this.buttonGenerate.Text = "Генерирай";
+            this.buttonGenerate.UseVisualStyleBackColor = false;
             this.buttonGenerate.Click += new System.EventHandler(this.buttonGenerate_Click);
-            // 
-            // richTextBoxBookInfo
-            // 
-            this.richTextBoxBookInfo.Location = new System.Drawing.Point(314, 9);
-            this.richTextBoxBookInfo.Name = "richTextBoxBookInfo";
-            this.richTextBoxBookInfo.Size = new System.Drawing.Size(200, 138);
-            this.richTextBoxBookInfo.TabIndex = 13;
-            this.richTextBoxBookInfo.Text = "";
-            // 
-            // richTextBoxShopInfo
-            // 
-            this.richTextBoxShopInfo.Location = new System.Drawing.Point(314, 291);
-            this.richTextBoxShopInfo.Name = "richTextBoxShopInfo";
-            this.richTextBoxShopInfo.Size = new System.Drawing.Size(200, 53);
-            this.richTextBoxShopInfo.TabIndex = 14;
-            this.richTextBoxShopInfo.Text = "";
-            this.richTextBoxShopInfo.TextChanged += new System.EventHandler(this.richTextBoxShopInfo_TextChanged);
-            // 
-            // labelTitle
-            // 
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Location = new System.Drawing.Point(12, 17);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(38, 20);
-            this.labelTitle.TabIndex = 15;
-            this.labelTitle.Text = "Title";
-            // 
-            // textBoxTitle
-            // 
-            this.textBoxTitle.AllowDrop = true;
-            this.textBoxTitle.Location = new System.Drawing.Point(111, 9);
-            this.textBoxTitle.Name = "textBoxTitle";
-            this.textBoxTitle.Size = new System.Drawing.Size(176, 28);
-            this.textBoxTitle.TabIndex = 16;
             // 
             // buttonCopyBookInfo
             // 
-            this.buttonCopyBookInfo.Location = new System.Drawing.Point(520, 118);
+            this.buttonCopyBookInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonCopyBookInfo.Font = new System.Drawing.Font("Open Sans", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCopyBookInfo.Location = new System.Drawing.Point(241, 9);
             this.buttonCopyBookInfo.Name = "buttonCopyBookInfo";
-            this.buttonCopyBookInfo.Size = new System.Drawing.Size(94, 29);
+            this.buttonCopyBookInfo.Size = new System.Drawing.Size(238, 115);
             this.buttonCopyBookInfo.TabIndex = 17;
-            this.buttonCopyBookInfo.Text = "Copy";
-            this.buttonCopyBookInfo.UseVisualStyleBackColor = true;
+            this.buttonCopyBookInfo.Text = "Описание";
+            this.buttonCopyBookInfo.UseVisualStyleBackColor = false;
             this.buttonCopyBookInfo.Click += new System.EventHandler(this.buttonCopyBookInfo_Click);
             // 
             // buttonCopyShopInfo
             // 
-            this.buttonCopyShopInfo.Location = new System.Drawing.Point(522, 290);
+            this.buttonCopyShopInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonCopyShopInfo.Font = new System.Drawing.Font("Open Sans", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCopyShopInfo.Location = new System.Drawing.Point(241, 225);
             this.buttonCopyShopInfo.Name = "buttonCopyShopInfo";
-            this.buttonCopyShopInfo.Size = new System.Drawing.Size(94, 29);
+            this.buttonCopyShopInfo.Size = new System.Drawing.Size(238, 68);
             this.buttonCopyShopInfo.TabIndex = 18;
-            this.buttonCopyShopInfo.Text = "Copy";
-            this.buttonCopyShopInfo.UseVisualStyleBackColor = true;
+            this.buttonCopyShopInfo.Text = "Поръчайте";
+            this.buttonCopyShopInfo.UseVisualStyleBackColor = false;
             this.buttonCopyShopInfo.Click += new System.EventHandler(this.buttonCopyShopInfo_Click);
-            // 
-            // textBoxISBNCopy
-            // 
-            this.textBoxISBNCopy.Location = new System.Drawing.Point(314, 153);
-            this.textBoxISBNCopy.Name = "textBoxISBNCopy";
-            this.textBoxISBNCopy.Size = new System.Drawing.Size(200, 28);
-            this.textBoxISBNCopy.TabIndex = 19;
             // 
             // buttonCopyISBN
             // 
-            this.buttonCopyISBN.Location = new System.Drawing.Point(522, 153);
+            this.buttonCopyISBN.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonCopyISBN.Font = new System.Drawing.Font("Open Sans", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCopyISBN.Location = new System.Drawing.Point(323, 130);
             this.buttonCopyISBN.Name = "buttonCopyISBN";
-            this.buttonCopyISBN.Size = new System.Drawing.Size(92, 32);
+            this.buttonCopyISBN.Size = new System.Drawing.Size(156, 40);
             this.buttonCopyISBN.TabIndex = 20;
-            this.buttonCopyISBN.Text = "Copy";
-            this.buttonCopyISBN.UseVisualStyleBackColor = true;
+            this.buttonCopyISBN.Text = "ISBN";
+            this.buttonCopyISBN.UseVisualStyleBackColor = false;
             this.buttonCopyISBN.Click += new System.EventHandler(this.buttonCopyISBN_Click);
-            // 
-            // textBoxPublisherCopy
-            // 
-            this.textBoxPublisherCopy.Location = new System.Drawing.Point(314, 187);
-            this.textBoxPublisherCopy.Name = "textBoxPublisherCopy";
-            this.textBoxPublisherCopy.Size = new System.Drawing.Size(200, 28);
-            this.textBoxPublisherCopy.TabIndex = 21;
             // 
             // buttonPublisher
             // 
-            this.buttonPublisher.Location = new System.Drawing.Point(522, 187);
+            this.buttonPublisher.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonPublisher.Font = new System.Drawing.Font("Open Sans", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonPublisher.Location = new System.Drawing.Point(241, 348);
             this.buttonPublisher.Name = "buttonPublisher";
-            this.buttonPublisher.Size = new System.Drawing.Size(92, 28);
+            this.buttonPublisher.Size = new System.Drawing.Size(238, 37);
             this.buttonPublisher.TabIndex = 22;
-            this.buttonPublisher.Text = "Copy";
-            this.buttonPublisher.UseVisualStyleBackColor = true;
+            this.buttonPublisher.Text = "Издателство";
+            this.buttonPublisher.UseVisualStyleBackColor = false;
             this.buttonPublisher.Click += new System.EventHandler(this.buttonPublisher_Click);
             // 
             // buttonCopyHS
             // 
             this.buttonCopyHS.BackColor = System.Drawing.Color.Chocolate;
             this.buttonCopyHS.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonCopyHS.Location = new System.Drawing.Point(12, 257);
+            this.buttonCopyHS.Location = new System.Drawing.Point(340, 180);
             this.buttonCopyHS.Name = "buttonCopyHS";
-            this.buttonCopyHS.Size = new System.Drawing.Size(138, 38);
+            this.buttonCopyHS.Size = new System.Drawing.Size(139, 39);
             this.buttonCopyHS.TabIndex = 24;
             this.buttonCopyHS.Text = "490199";
             this.buttonCopyHS.UseVisualStyleBackColor = false;
@@ -262,9 +123,9 @@ namespace Balgaran
             // 
             // richTextBoxBookInfoScanner
             // 
-            this.richTextBoxBookInfoScanner.Location = new System.Drawing.Point(12, 301);
+            this.richTextBoxBookInfoScanner.Location = new System.Drawing.Point(12, 321);
             this.richTextBoxBookInfoScanner.Name = "richTextBoxBookInfoScanner";
-            this.richTextBoxBookInfoScanner.Size = new System.Drawing.Size(171, 84);
+            this.richTextBoxBookInfoScanner.Size = new System.Drawing.Size(211, 64);
             this.richTextBoxBookInfoScanner.TabIndex = 25;
             this.richTextBoxBookInfoScanner.Text = "";
             this.richTextBoxBookInfoScanner.TextChanged += new System.EventHandler(this.richTextBoxBookInfoScanner_TextChanged);
@@ -273,7 +134,7 @@ namespace Balgaran
             // 
             this.buttonWeightCopy.BackColor = System.Drawing.Color.Aqua;
             this.buttonWeightCopy.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonWeightCopy.Location = new System.Drawing.Point(314, 223);
+            this.buttonWeightCopy.Location = new System.Drawing.Point(241, 179);
             this.buttonWeightCopy.Name = "buttonWeightCopy";
             this.buttonWeightCopy.Size = new System.Drawing.Size(93, 40);
             this.buttonWeightCopy.TabIndex = 27;
@@ -287,28 +148,30 @@ namespace Balgaran
             this.comboBoxCover.Items.AddRange(new object[] {
             "Мека",
             "Твърда"});
-            this.comboBoxCover.Location = new System.Drawing.Point(111, 179);
+            this.comboBoxCover.Location = new System.Drawing.Point(11, 188);
             this.comboBoxCover.Name = "comboBoxCover";
-            this.comboBoxCover.Size = new System.Drawing.Size(176, 28);
+            this.comboBoxCover.Size = new System.Drawing.Size(212, 28);
             this.comboBoxCover.TabIndex = 28;
             // 
             // buttonPasteInfo
             // 
-            this.buttonPasteInfo.Location = new System.Drawing.Point(193, 301);
+            this.buttonPasteInfo.BackColor = System.Drawing.Color.Crimson;
+            this.buttonPasteInfo.Font = new System.Drawing.Font("Open Sans", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonPasteInfo.Location = new System.Drawing.Point(14, 276);
             this.buttonPasteInfo.Name = "buttonPasteInfo";
-            this.buttonPasteInfo.Size = new System.Drawing.Size(94, 29);
+            this.buttonPasteInfo.Size = new System.Drawing.Size(74, 39);
             this.buttonPasteInfo.TabIndex = 29;
-            this.buttonPasteInfo.Text = "Постави";
-            this.buttonPasteInfo.UseVisualStyleBackColor = true;
+            this.buttonPasteInfo.Text = "Store";
+            this.buttonPasteInfo.UseVisualStyleBackColor = false;
             this.buttonPasteInfo.Click += new System.EventHandler(this.buttonPasteInfo_Click);
             // 
             // buttonPrice
             // 
             this.buttonPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.buttonPrice.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonPrice.Location = new System.Drawing.Point(413, 223);
+            this.buttonPrice.Location = new System.Drawing.Point(241, 130);
             this.buttonPrice.Name = "buttonPrice";
-            this.buttonPrice.Size = new System.Drawing.Size(90, 40);
+            this.buttonPrice.Size = new System.Drawing.Size(76, 40);
             this.buttonPrice.TabIndex = 31;
             this.buttonPrice.Text = "Цена";
             this.buttonPrice.UseVisualStyleBackColor = false;
@@ -318,20 +181,92 @@ namespace Balgaran
             // 
             this.buttonURL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonURL.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonURL.Location = new System.Drawing.Point(314, 350);
+            this.buttonURL.Location = new System.Drawing.Point(241, 299);
             this.buttonURL.Name = "buttonURL";
-            this.buttonURL.Size = new System.Drawing.Size(296, 39);
+            this.buttonURL.Size = new System.Drawing.Size(238, 39);
             this.buttonURL.TabIndex = 32;
             this.buttonURL.Text = "Адрес";
             this.buttonURL.UseVisualStyleBackColor = false;
             this.buttonURL.Click += new System.EventHandler(this.buttonURL_Click);
+            // 
+            // buttonSetTitle
+            // 
+            this.buttonSetTitle.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonSetTitle.Location = new System.Drawing.Point(10, 5);
+            this.buttonSetTitle.Name = "buttonSetTitle";
+            this.buttonSetTitle.Size = new System.Drawing.Size(213, 36);
+            this.buttonSetTitle.TabIndex = 33;
+            this.buttonSetTitle.Text = "Заглавие";
+            this.buttonSetTitle.UseVisualStyleBackColor = false;
+            this.buttonSetTitle.Click += new System.EventHandler(this.buttonSetTitle_Click);
+            // 
+            // buttonSetAuthor
+            // 
+            this.buttonSetAuthor.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonSetAuthor.Location = new System.Drawing.Point(11, 45);
+            this.buttonSetAuthor.Name = "buttonSetAuthor";
+            this.buttonSetAuthor.Size = new System.Drawing.Size(212, 29);
+            this.buttonSetAuthor.TabIndex = 34;
+            this.buttonSetAuthor.Text = "Автор";
+            this.buttonSetAuthor.UseVisualStyleBackColor = false;
+            this.buttonSetAuthor.Click += new System.EventHandler(this.buttonSetAuthor_Click);
+            // 
+            // buttonSetPublisher
+            // 
+            this.buttonSetPublisher.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonSetPublisher.Location = new System.Drawing.Point(12, 80);
+            this.buttonSetPublisher.Name = "buttonSetPublisher";
+            this.buttonSetPublisher.Size = new System.Drawing.Size(211, 32);
+            this.buttonSetPublisher.TabIndex = 35;
+            this.buttonSetPublisher.Text = "Издателство";
+            this.buttonSetPublisher.UseVisualStyleBackColor = false;
+            this.buttonSetPublisher.Click += new System.EventHandler(this.buttonSetPublisher_Click);
+            // 
+            // buttonSetYear
+            // 
+            this.buttonSetYear.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonSetYear.Location = new System.Drawing.Point(12, 115);
+            this.buttonSetYear.Name = "buttonSetYear";
+            this.buttonSetYear.Size = new System.Drawing.Size(211, 32);
+            this.buttonSetYear.TabIndex = 36;
+            this.buttonSetYear.Text = "Година";
+            this.buttonSetYear.UseVisualStyleBackColor = false;
+            this.buttonSetYear.Click += new System.EventHandler(this.buttonSetYear_Click);
+            // 
+            // buttonSetPagesCount
+            // 
+            this.buttonSetPagesCount.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonSetPagesCount.Location = new System.Drawing.Point(12, 153);
+            this.buttonSetPagesCount.Name = "buttonSetPagesCount";
+            this.buttonSetPagesCount.Size = new System.Drawing.Size(211, 29);
+            this.buttonSetPagesCount.TabIndex = 37;
+            this.buttonSetPagesCount.Text = "Страници";
+            this.buttonSetPagesCount.UseVisualStyleBackColor = false;
+            this.buttonSetPagesCount.Click += new System.EventHandler(this.buttonSetPagesCount_Click);
+            // 
+            // buttonISBN
+            // 
+            this.buttonISBN.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonISBN.Location = new System.Drawing.Point(12, 223);
+            this.buttonISBN.Name = "buttonISBN";
+            this.buttonISBN.Size = new System.Drawing.Size(211, 38);
+            this.buttonISBN.TabIndex = 38;
+            this.buttonISBN.Text = "ISBN";
+            this.buttonISBN.UseVisualStyleBackColor = false;
+            this.buttonISBN.Click += new System.EventHandler(this.buttonISBN_Click);
             // 
             // Index
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 394);
+            this.ClientSize = new System.Drawing.Size(489, 394);
+            this.Controls.Add(this.buttonISBN);
+            this.Controls.Add(this.buttonSetPagesCount);
+            this.Controls.Add(this.buttonSetYear);
+            this.Controls.Add(this.buttonSetPublisher);
+            this.Controls.Add(this.buttonSetAuthor);
+            this.Controls.Add(this.buttonSetTitle);
             this.Controls.Add(this.buttonURL);
             this.Controls.Add(this.buttonPrice);
             this.Controls.Add(this.buttonPasteInfo);
@@ -340,59 +275,23 @@ namespace Balgaran
             this.Controls.Add(this.richTextBoxBookInfoScanner);
             this.Controls.Add(this.buttonCopyHS);
             this.Controls.Add(this.buttonPublisher);
-            this.Controls.Add(this.textBoxPublisherCopy);
             this.Controls.Add(this.buttonCopyISBN);
-            this.Controls.Add(this.textBoxISBNCopy);
             this.Controls.Add(this.buttonCopyShopInfo);
             this.Controls.Add(this.buttonCopyBookInfo);
-            this.Controls.Add(this.textBoxTitle);
-            this.Controls.Add(this.labelTitle);
-            this.Controls.Add(this.richTextBoxShopInfo);
-            this.Controls.Add(this.richTextBoxBookInfo);
             this.Controls.Add(this.buttonGenerate);
-            this.Controls.Add(this.labelISBN);
-            this.Controls.Add(this.textBoxISBN);
-            this.Controls.Add(this.labelCover);
-            this.Controls.Add(this.labelPagesCount);
-            this.Controls.Add(this.textBoxPagesCount);
-            this.Controls.Add(this.textBoxYear);
-            this.Controls.Add(this.labelYear);
-            this.Controls.Add(this.textBoxPublisher);
-            this.Controls.Add(this.labelPublisher);
-            this.Controls.Add(this.labelAuthor);
-            this.Controls.Add(this.textBoxAuthor);
             this.Name = "Index";
             this.Text = "z";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Index_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBoxAuthor;
-        private System.Windows.Forms.Label labelAuthor;
-        private System.Windows.Forms.Label labelPublisher;
-        private System.Windows.Forms.TextBox textBoxPublisher;
-        private System.Windows.Forms.Label labelYear;
-        private System.Windows.Forms.TextBox textBoxYear;
-        private System.Windows.Forms.TextBox textBoxPagesCount;
-        private System.Windows.Forms.Label labelPagesCount;
-        private System.Windows.Forms.Label labelCover;
-        private System.Windows.Forms.TextBox textBoxISBN;
-        private System.Windows.Forms.Label labelISBN;
         private System.Windows.Forms.Button buttonGenerate;
-        private System.Windows.Forms.RichTextBox richTextBoxBookInfo;
-        private System.Windows.Forms.RichTextBox richTextBoxShopInfo;
-        private System.Windows.Forms.Label labelTitle;
-        private System.Windows.Forms.TextBox textBoxTitle;
         private System.Windows.Forms.Button buttonCopyBookInfo;
         private System.Windows.Forms.Button buttonCopyShopInfo;
-        private System.Windows.Forms.TextBox textBoxISBNCopy;
         private System.Windows.Forms.Button buttonCopyISBN;
-        private System.Windows.Forms.TextBox textBoxPublisherCopy;
         private System.Windows.Forms.Button buttonPublisher;
         private System.Windows.Forms.Button buttonCopyHS;
         private System.Windows.Forms.RichTextBox richTextBoxBookInfoScanner;
@@ -401,6 +300,12 @@ namespace Balgaran
         private System.Windows.Forms.Button buttonPasteInfo;
         private System.Windows.Forms.Button buttonPrice;
         private System.Windows.Forms.Button buttonURL;
+        private System.Windows.Forms.Button buttonSetTitle;
+        private System.Windows.Forms.Button buttonSetAuthor;
+        private System.Windows.Forms.Button buttonSetPublisher;
+        private System.Windows.Forms.Button buttonSetYear;
+        private System.Windows.Forms.Button buttonSetPagesCount;
+        private System.Windows.Forms.Button buttonISBN;
     }
 }
 
