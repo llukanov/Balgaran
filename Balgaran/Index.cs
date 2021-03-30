@@ -61,6 +61,10 @@ namespace Balgaran
             letters.Add(",", "");
             letters.Add("(", "");
             letters.Add(")", "");
+            letters.Add("?", "");
+            letters.Add(":", "");
+            letters.Add("---", "-");
+            letters.Add("--", "-");
         }
 
         private void buttonGenerate_Click(object sender, EventArgs e)
@@ -130,8 +134,8 @@ namespace Balgaran
         private void SetURL()
         {
             var url = title;
-            url += author;
-            url += comboBoxCover.SelectedItem.ToString();
+            url += " " + author;
+            url += " " + comboBoxCover.SelectedItem.ToString();
             url = url.ToLower();
 
             foreach (KeyValuePair<string, string> pair in letters)
@@ -244,6 +248,8 @@ namespace Balgaran
                 }
 
                 var weight = Convert.ToDouble(weightString, CultureInfo.InvariantCulture) + 0.05;
+
+                weight = Math.Round(weight, 2);
 
                 buttonWeightCopy.Text = weight.ToString(new CultureInfo("en-US"));
             }
